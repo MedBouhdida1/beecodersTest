@@ -1,0 +1,118 @@
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Price</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (course of lstCourse; track course.id) {
+            <tr>
+                <th><img [src]="course.image " alt="image" width="50px"></th>
+                <td>{{course.title}}</td>
+                <td>{{course.price}}</td>
+                <td> <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModifModal"
+                        (click)="  getCourseById(course.id)">
+                        Modify</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteCourse(course.id)">Delete</button>
+                </td>
+            </tr>
+            }
+            @empty {<h1>No Data Found</h1>}
+
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-center">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add Course
+        </button>
+
+    </div>
+</div>
+
+
+<!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #Add>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form #myForm="ngForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="title"
+                            [(ngModel)]="course2.title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" name="price"
+                            [(ngModel)]="course2.price">
+                    </div>
+                    <div class="mb-3 ">
+                        <label class="form-label" for="exampleCheck1">Image</label>
+                        <input class="form-control" type="file" id="thumb-img" accept="image/*"
+                            (change)="onSelectFile($event)" name="image">
+                        @if (imgURL) {
+                        <img [src]="imgURL" alt="image" width="50px">
+                        }
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)="addCourse()">Add</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="modal fade" id="ModifModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" #Modif>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form #FormModif="ngForm">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Course</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="exampleInputEmail1" class="form-label">Title</label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" name="title"
+                            [value]="course1.title" [(ngModel)]="course1.title">
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleInputPassword1" class="form-label">Price</label>
+                        <input type="number" class="form-control" id="exampleInputPassword1" name="price"
+                            [(ngModel)]="course1.price" [value]="course1.price">
+                    </div>
+                    <div class="mb-3 ">
+                        <label class="form-label" for="exampleCheck1">Image</label>
+                        <input class="form-control" type="file" id="thumb-img" accept="image/*"
+                            (change)="onSelectFile($event)" name="image">
+                        @if (course1.image) {
+                        <img [src]="course1.image" alt="image" width="50px">
+                        }
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)="ModifCourse()">Modify</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

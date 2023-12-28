@@ -1,0 +1,72 @@
+.team {
+    width: 200px;
+    height: 200px;
+}
+
+.img {
+    width: 20px;
+    height: 20px;
+    object-fit: cover;
+}
+
+.discover {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 20px;
+    /* Adjust the gap as needed */
+}
+
+.grid-item {
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+
+.grid-item img {
+    width: auto;
+    /* Allow the width to adjust based on the aspect ratio */
+    height: 200px;
+    /* Set a fixed height for all images */
+    object-fit: cover;
+    /* Ensures the image covers the entire container */
+}
+
+
+.contact {
+    padding: 50px;
+    border-radius: 10px;
+    background-color: rgb(249, 180, 84);
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-bottom: 50px;
+}
+
+
+input,
+textarea {
+    background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.8));
+    width: 400px;
+
+}
+
+.price {
+    color: #AF2F64;
+    font-weight: bold;
+}
+
+p {
+    font-weight: bold;
+}
